@@ -1,0 +1,556 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>虾米音乐</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWIndow#MainWindow {
+border: none;
+
+}</string>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <property name="dockOptions">
+   <set>QMainWindow::AllowTabbedDocks|QMainWindow::AnimatedDocks</set>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="styleSheet">
+    <string notr="true">QWidget#centralWidget {
+	border: none
+}</string>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <property name="spacing">
+     <number>5</number>
+    </property>
+    <property name="leftMargin">
+     <number>5</number>
+    </property>
+    <property name="topMargin">
+     <number>5</number>
+    </property>
+    <property name="rightMargin">
+     <number>5</number>
+    </property>
+    <property name="bottomMargin">
+     <number>5</number>
+    </property>
+    <item>
+     <widget class="QFrame" name="frame">
+      <property name="styleSheet">
+       <string notr="true">QFrame#frame {
+	border: none;
+
+}</string>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>0</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <widget class="QWidget" name="title_bar" native="true">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>60</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#title_bar {
+background: rgb(243, 243, 243);
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+}</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_4">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QWidget" name="widget_3" native="true">
+            <widget class="QPushButton" name="minium_btn">
+             <property name="geometry">
+              <rect>
+               <x>60</x>
+               <y>0</y>
+               <width>30</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: none</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Resources/green.png</normaloff>../Resources/green.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="maxium_btn">
+             <property name="geometry">
+              <rect>
+               <x>30</x>
+               <y>0</y>
+               <width>30</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: none;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Resources/blue.png</normaloff>../Resources/blue.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="close_btn">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>0</y>
+               <width>30</width>
+               <height>30</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>30</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: none;</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="icon">
+              <iconset>
+               <normaloff>../Resources/orange.png</normaloff>../Resources/orange.png</iconset>
+             </property>
+             <property name="flat">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label">
+            <property name="styleSheet">
+             <string notr="true">
+font-weight:500;
+font-size: 14pt;</string>
+            </property>
+            <property name="text">
+             <string>虾米音乐</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignCenter</set>
+            </property>
+            <property name="wordWrap">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="widget_2" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>80</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>0</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <property name="bottomMargin">
+              <number>0</number>
+             </property>
+             <item alignment="Qt::AlignLeft">
+              <widget class="QPushButton" name="avatar">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="search" native="true">
+            <property name="maximumSize">
+             <size>
+              <width>200</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <widget class="QLineEdit" name="lineEdit">
+             <property name="geometry">
+              <rect>
+               <x>0</x>
+               <y>20</y>
+               <width>181</width>
+               <height>25</height>
+              </rect>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>30</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::ClickFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">background: none;
+border-radius: 10px;</string>
+             </property>
+             <property name="placeholderText">
+              <string>Search</string>
+             </property>
+            </widget>
+            <widget class="QPushButton" name="search_btn">
+             <property name="geometry">
+              <rect>
+               <x>160</x>
+               <y>20</y>
+               <width>25</width>
+               <height>25</height>
+              </rect>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton#search_btn
+{
+	background: rgba(255, 255, 255, 0);
+	image: url(&quot;../Resources/nav_srch_btn.png&quot;);
+}</string>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="default">
+              <bool>false</bool>
+             </property>
+             <property name="flat">
+              <bool>false</bool>
+             </property>
+            </widget>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="content" native="true">
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <property name="leftMargin">
+           <number>0</number>
+          </property>
+          <property name="topMargin">
+           <number>0</number>
+          </property>
+          <property name="rightMargin">
+           <number>0</number>
+          </property>
+          <property name="bottomMargin">
+           <number>0</number>
+          </property>
+          <item>
+           <widget class="QListView" name="function_list">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="maximumSize">
+             <size>
+              <width>180</width>
+              <height>16777215</height>
+             </size>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">#function_list{
+background-color: rgb(240, 240, 240);
+}</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="main_content" native="true">
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QWidget" name="control_bar" native="true">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>80</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QWidget#control_bar
+{
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(41, 45, 52, 255), stop:1 rgba(18, 22, 24, 255))
+}</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_5">
+          <item>
+           <widget class="QWidget" name="widget" native="true">
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QPushButton" name="prev_btn">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#prev_btn {
+	image: url(&quot;../Resources/Control/previous_normal.tiff&quot;);
+	background: rgba(255, 255, 255, 0);
+}
+QPushButton#prev_btn:hover {
+	image: url(&quot;../Resources/Control/previous_hover.tiff&quot;);
+}
+QPushButton#prev_btn:pressed {
+	image: url(&quot;../Resources/Control/previous_down.tiff&quot;);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="play_btn">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#play_btn {
+	image: url(&quot;../Resources/Control/play_normal.tiff&quot;) 30px 30px;
+	background: rgba(255, 255, 255, 0);
+}
+QPushButton#play_btn:hover {
+	image: url(&quot;../Resources/Control/play_hover.tiff&quot;);
+}
+QPushButton#play_btn:pressed {
+	image: url(&quot;../Resources/Control/play_down.tiff&quot;);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="next_btn">
+               <property name="maximumSize">
+                <size>
+                 <width>40</width>
+                 <height>40</height>
+                </size>
+               </property>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton#next_btn {
+	image: url(&quot;../Resources/Control/next_normal.tiff&quot;);
+	background: rgba(255, 255, 255, 0);
+}
+QPushButton#next_btn:hover {
+	image: url(&quot;../Resources/Control/next_hover.tiff&quot;);
+}
+QPushButton#next_btn:pressed {
+	image: url(&quot;../Resources/Control/next_down.tiff&quot;);
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>30</width>
+                 <height>30</height>
+                </size>
+               </property>
+               <property name="flat">
+                <bool>false</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="horizontalSlider">
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">background: none;</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>900</width>
+     <height>29</height>
+    </rect>
+   </property>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>

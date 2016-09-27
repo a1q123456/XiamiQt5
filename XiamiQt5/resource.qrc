@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>carousel.qml</file>
+        <file>img/large_cover_play_down.png</file>
+        <file>img/large_cover_play_hover.png</file>
+        <file>img/large_cover_play_normal.png</file>
+    </qresource>
+</RCC>
