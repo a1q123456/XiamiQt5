@@ -43,6 +43,6 @@ FORMS    += mainwindow.ui \
 
 INCLUDEPATH += $$PWD/../XiamiAPI/include
 LIBS += -L"$$PWD/../XiamiAPI/lib" -lxiamiapi -lcurl
-
+QMAKE_MAC_SDK = macosx10.12
 RESOURCES += \
     resource.qrc

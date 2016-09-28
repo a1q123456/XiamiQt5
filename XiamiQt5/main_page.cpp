@@ -13,8 +13,9 @@ main_page::main_page(QWidget *parent) :
     {
         xiamiapi::IXiamiCollectionInfo* info;
         recommend_list->get_element(i)->QueryInterface(recommend_list->ElementIID(), (void **)&info);
-        QString logo = info->get_logo();
-        list_data.push_back(CarouselListModelObject{info->get_list_id(), info->get_logo(), info->get_collect_name()});
+        std::string logo = info->get_logo();
+        logo.replace(logo.rfind("_1"), 2, "_5");
+        list_data.push_back(CarouselListModelObject{info->get_list_id(), logo.c_str(), info->get_collect_name()});
 
     }
     QQuickView *view = new QQuickView();

@@ -2,14 +2,14 @@ import QtQuick 2.4
 import QtGraphicalEffects 1.0
 
 Item {
+    anchors.fill: parent;
     Rectangle {
         id: root
-        width: 800
-        height:300
+        anchors.fill: parent;
         property int albumSize;
         property int globalWidth;
         property int globalHeight;
-        albumSize: 145;
+        albumSize: 250;
         color: "transparent"
         signal sendClicked(int albumId);
         signal onEntered();
@@ -18,47 +18,37 @@ Item {
         Image {
             id:backgroundImage
             width:root.width
-            height: root.height * 0.7
+            height: root.height * 0.5
             clip: true
             fillMode: Image.PreserveAspectCrop
             verticalAlignment: Image.AlignVCenter
             source: pathView.currentItem.children[1].source
             anchors.horizontalCenter: parent.horizontalCenter
+
             onSourceChanged: {
 
             }
 
         }
         GaussianBlur {
+            id: backgroundBlur
             anchors.fill: backgroundImage
             source: backgroundImage
             radius: 32
             samples: 16
         }
 
+
         Rectangle {
             y: 0
             x: 0
             width: backgroundImage.width
-            height: root.height * 0.7
+            height: root.height * 0.5
             gradient: Gradient {
                 GradientStop { position: 0.0; color: Qt.rgba(0,0,0, 0.0) }
                 GradientStop { position: 1; color: Qt.rgba(255,255,255, 1.0) }
             }
         }
-
-//         ListModel {
-//             id:albumModel
-
-//             ListElement { albumId: 1; picPath: "pics/340126.jpg" ; albumName: "aaa"     }
-//             ListElement { albumId: 2; picPath: "pics/381815.jpg" ; albumName: "aaa"    }
-//             ListElement { albumId: 3; picPath: "pics/485180.jpg" ; albumName: "aaa"    }
-//             ListElement { albumId: 4; picPath: "pics/1861261471.jpg" ; albumName: "aaa"}
-//             ListElement { albumId: 5; picPath: "pics/1669845108.jpg" ; albumName: "aaa"}
-//             ListElement { albumId: 6; picPath: "pics/2081821708.jpg" ; albumName: "aaa"}
-//             ListElement { albumId: 7; picPath: "pics/507984.jpg"     ; albumName: "aaa"}
-//         }
-
 
          Component {
              id:albumViewModel
