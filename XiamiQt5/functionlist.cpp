@@ -13,14 +13,14 @@ QStringList FunctionList::function_list()
         "下载列表"
     };
 }
-void FunctionList::change_page(const int & index, QWidget* widget)
+void FunctionList::change_page(const int & index, QWidget* widget, QWidget * context)
 {
     if (current_page != nullptr)
     {
         delete current_page;
     }
     qDeleteAll(widget->children());
-    current_page = new main_page(widget);
+    current_page = new main_page(widget, context);
 }
 FunctionList::FunctionList()
 {

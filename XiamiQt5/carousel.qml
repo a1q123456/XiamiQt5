@@ -1,8 +1,11 @@
 import QtQuick 2.4
 import QtGraphicalEffects 1.0
+import QtMultimedia 5.6
 
 Item {
     anchors.fill: parent;
+    id: qmlroot
+    signal collectionClicked(int collectionId);
     Rectangle {
         id: root
         anchors.fill: parent;
@@ -11,9 +14,6 @@ Item {
         property int globalHeight;
         albumSize: 250;
         color: "transparent"
-        signal sendClicked(int albumId);
-        signal onEntered();
-        signal onExited();
 
         Image {
             id:backgroundImage
@@ -76,7 +76,7 @@ Item {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                root.sendClicked(albumId)
+                                qmlroot.collectionClicked(albumId)
                             }
 
                             onPressed:{
@@ -186,6 +186,10 @@ Item {
             PathAttribute {name: "scale"; value: 0.5}
             PathAttribute {name: "zIndex"; value: 1}
         }
+    }
+
+    MediaPlayer {
+        id: mediaplayer
     }
 }
 

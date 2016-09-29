@@ -13,7 +13,7 @@ public:
     FunctionList(const FunctionList&) = delete;
     FunctionList(FunctionList&&) = delete;
     QStringList static function_list();
-    void change_page(const int & index, QWidget* widget);
+    void change_page(const int & index, QWidget* widget, QWidget * context);
     FunctionList static * instance();
 };
 

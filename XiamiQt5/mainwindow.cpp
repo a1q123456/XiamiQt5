@@ -1,4 +1,7 @@
 #include "pch.h"
+#include <xiamiapi.h>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -6,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     is_maxiumized = false;
     is_moving = false;
+    api = xiamiapi::IXiamiAPI::CreateInstance();
     setWindowFlags(Qt::Widget | Qt::FramelessWindowHint);
     setAttribute(Qt::WA_NoSystemBackground, true);
     setAttribute(Qt::WA_TranslucentBackground, true);
@@ -16,18 +20,36 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->centralWidget->setGraphicsEffect(wndShadow);
     FunctionListModel * model = new FunctionListModel(nullptr);
-
+    player = new QMediaPlayer;
+    playlist = new QMediaPlaylist;
     ui->function_list->setModel(model);
 
 }
 void MainWindow::on_function_list_clicked(const QModelIndex &index)
 {
-    FunctionList::instance()->change_page(index.row(), ui->main_content);
+    FunctionList::instance()->change_page(index.row(), ui->main_content, this);
+}
+
+void MainWindow::play(const Playlist &list)
+{
+    qDebug() << "playing list, contains " << list[0].song_name << ", " << list[1].song_name << " ...";
+    playlist->clear();
+    for (SongInfo i : list)
+    {
+        playlist->addMedia(QUrl(i.song_url));
+    }
+    playlist->setCurrentIndex(1);
+    player->setPlaylist(playlist);
+    player->setVolume(50);
+    player->play();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete api;
+    delete player;
+    delete playlist;
 }
 
 void MainWindow::on_close_btn_clicked()
