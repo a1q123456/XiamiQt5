@@ -2,14 +2,14 @@
 #define CAROUSELLISTMODELOBJECT_H
 #include <QString>
 
-class CarouselListModelObject
+class CarouselCollectionModelObject
 {
 public:
-    CarouselListModelObject(const uint64_t & albumId, const QString& picPath, const QString& albumName);
+    CarouselCollectionModelObject(const uint64_t & collectionId, const QString& picPath, const QString& collectionName);
 
-    uint64_t albumId;
+    uint64_t collectionId;
     QString picPath;
-    QString albumName;
+    QString collectionName;
 };
 
 #endif // CAROUSELLISTMODELOBJECT_H

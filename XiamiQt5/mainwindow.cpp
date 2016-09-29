@@ -19,9 +19,10 @@ MainWindow::MainWindow(QWidget *parent) :
     wndShadow->setOffset(0);
     ui->setupUi(this);
     ui->centralWidget->setGraphicsEffect(wndShadow);
-    FunctionListModel * model = new FunctionListModel(nullptr);
+    FunctionListModel * model = new FunctionListModel(parent);
     player = new QMediaPlayer;
     playlist = new QMediaPlaylist;
+
     ui->function_list->setModel(model);
 
 }

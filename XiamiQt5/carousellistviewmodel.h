@@ -7,27 +7,27 @@
 #include "carousellistmodelobject.h"
 
 enum CarouselListViewModelRole {
-    AlbumIdRole = Qt::UserRole + 1,
+    CollectionIdRole = Qt::UserRole + 1,
     PicPathRole = Qt::UserRole + 2
 };
 
 
-class CarouselListViewModel : public QAbstractListModel
+class CarouselCollectionListViewModel : public QAbstractListModel
 {
 public:
-    CarouselListViewModel(QObject *parent);
+    CarouselCollectionListViewModel(QObject *parent);
     virtual int rowCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     virtual int columnCount(const QModelIndex &parent = QModelIndex()) const Q_DECL_OVERRIDE;
     virtual QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const Q_DECL_OVERRIDE;
-    virtual QHash<int, QByteArray> roleNames() const;
+    virtual QHash<int, QByteArray> roleNames() const Q_DECL_OVERRIDE;
     QHash<int, QByteArray> role_names{
-        {AlbumIdRole, "albumId"},
+        {CollectionIdRole, "collectionId"},
         {PicPathRole, "picPath"},
-        {Qt::DisplayRole, "albumName"}
+        {Qt::DisplayRole, "collectionName"}
     };
-    void setItem(const std::vector<CarouselListModelObject>& data);
+    void setItem(std::vector<CarouselCollectionModelObject>&& data);
 private:
-    std::vector<CarouselListModelObject> list_data;
+    std::vector<CarouselCollectionModelObject> list_data;
 };
 
 #endif // CAROUSELLISTVIEWMODEL_H

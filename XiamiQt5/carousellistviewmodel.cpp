@@ -1,40 +1,41 @@
 #include "carousellistviewmodel.h"
 
-CarouselListViewModel::CarouselListViewModel(QObject *parent):
+CarouselCollectionListViewModel::CarouselCollectionListViewModel(QObject *parent):
     QAbstractListModel(parent)
 {
 }
 
-int CarouselListViewModel::rowCount(const QModelIndex &) const
+int CarouselCollectionListViewModel::rowCount(const QModelIndex &) const
 {
     return list_data.size();
 }
 
-int CarouselListViewModel::columnCount(const QModelIndex &) const
+int CarouselCollectionListViewModel::columnCount(const QModelIndex &) const
 {
     return 1;
 }
 
-void CarouselListViewModel::setItem(const std::vector<CarouselListModelObject>& data)
+void CarouselCollectionListViewModel::setItem(std::vector<CarouselCollectionModelObject>&& data)
 {
     this->list_data = std::move(data);
 }
 
-QVariant CarouselListViewModel::data(const QModelIndex &index, int role) const
+QVariant CarouselCollectionListViewModel::data(const QModelIndex &index, int role) const
 {
     switch (role)
     {
-    case AlbumIdRole:
-        return static_cast<uint>(list_data[index.row()].albumId);
+    case CollectionIdRole:
+        return static_cast<uint>(list_data[index.row()].collectionId);
     case Qt::DisplayRole:
-        return list_data[index.row()].albumName;
+        return list_data[index.row()].collectionName;
     case PicPathRole:
         return list_data[index.row()].picPath;
     }
     return QVariant();
 }
 
-QHash<int, QByteArray> CarouselListViewModel::roleNames() const
+
+QHash<int, QByteArray> CarouselCollectionListViewModel::roleNames() const
 {
     return role_names;
 }

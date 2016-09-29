@@ -1,9 +1,9 @@
 #include "carousellistmodelobject.h"
 
 
-CarouselListModelObject::CarouselListModelObject(const uint64_t &albumId, const QString &picPath, const QString &albumName)
+CarouselCollectionModelObject::CarouselCollectionModelObject(const uint64_t &collectionId, const QString &picPath, const QString &collectionName)
     :
-      albumId(albumId),
+      collectionId(collectionId),
       picPath(picPath),
-      albumName(albumName)
+      collectionName(collectionName)
 {}

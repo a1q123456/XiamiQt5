@@ -374,6 +374,9 @@ border-radius: 10px;</string>
 background-color: rgb(240, 240, 240);
 }</string>
             </property>
+            <property name="showDropIndicator" stdset="0">
+             <bool>false</bool>
+            </property>
            </widget>
           </item>
           <item>

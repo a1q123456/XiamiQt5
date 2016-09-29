@@ -1,24 +1,31 @@
 import QtQuick 2.4
 import QtGraphicalEffects 1.0
 import QtMultimedia 5.6
+import QtQuick.Layouts 1.3
 
-Item {
+ColumnLayout {
+    spacing: 0
     anchors.fill: parent;
     id: qmlroot
     signal collectionClicked(int collectionId);
+    signal albumClicked(int albumId);
+
     Rectangle {
         id: root
-        anchors.fill: parent;
-        property int albumSize;
+        Layout.alignment: Qt.AlignTop
+
+        Layout.fillWidth: true
+        Layout.preferredHeight: parent.height * 0.6
+        property int collectionSize;
         property int globalWidth;
         property int globalHeight;
-        albumSize: 250;
+        property int albumSize: 150
+        collectionSize: 220;
         color: "transparent"
 
         Image {
             id:backgroundImage
-            width:root.width
-            height: root.height * 0.5
+            anchors.fill: parent
             clip: true
             fillMode: Image.PreserveAspectCrop
             verticalAlignment: Image.AlignVCenter
@@ -43,7 +50,7 @@ Item {
             y: 0
             x: 0
             width: backgroundImage.width
-            height: root.height * 0.5
+            height: root.height
             gradient: Gradient {
                 GradientStop { position: 0.0; color: Qt.rgba(0,0,0, 0.0) }
                 GradientStop { position: 1; color: Qt.rgba(255,255,255, 1.0) }
@@ -51,18 +58,19 @@ Item {
         }
 
          Component {
-             id:albumViewModel
+             id:collectionViewModel
              Item {
                  property real scaleValue: PathView.scale
-                 width:root.albumSize
-                 height:root.albumSize
+                 width:root.collectionSize
+                 height:root.collectionSize
                  z:PathView.zIndex
                  Image {
-                    id:albumCover
-                    width:root.albumSize;
-                    height:root.albumSize;
+                    id:collectionCover
+                    width:root.collectionSize;
+                    height:root.collectionSize;
                     source: picPath
                     anchors.horizontalCenter: parent.horizontalCenter
+
 
                     Image {
                         id:playButton
@@ -76,7 +84,7 @@ Item {
                             anchors.fill: parent
                             hoverEnabled: true
                             onClicked: {
-                                qmlroot.collectionClicked(albumId)
+                                qmlroot.collectionClicked(collectionId)
                             }
 
                             onPressed:{
@@ -95,13 +103,13 @@ Item {
                         visible:(parent.parent.z==3)?true:false
                     }
                     Text {
-                        text: albumName
+                        text: collectionName
                         font.family: "sans-serif"
                         font.pointSize: 8
                         color: "white"
                         wrapMode :Text.WordWrap
                         anchors {
-                            bottom:albumCover.bottom;
+                            bottom:collectionCover.bottom;
                             bottomMargin:0
                         }
                         visible:(parent.parent.z==3)?true:false
@@ -110,14 +118,14 @@ Item {
                 }
                 Image {
                     id:mirror
-                    width:root.albumSize
-                    height:root.albumSize
+                    width:root.collectionSize
+                    height:root.collectionSize
                     source: picPath
                     anchors.horizontalCenter: parent.horizontalCenter
                     smooth:true
                     transform: Rotation {
                         origin.x:0
-                        origin.y:root.albumSize;
+                        origin.y:root.collectionSize;
                         axis{
                             x:1
                             y:0
@@ -148,48 +156,121 @@ Item {
             }
         }
 
+
         PathView {
             id:pathView
             focus:true
-            model: albumModel
-            delegate: albumViewModel
+            model: collectionModel
+            delegate: collectionViewModel
             anchors.fill: parent
 
-            pathItemCount: albumModel.count
+            pathItemCount: collectionModel.count
             preferredHighlightBegin: 0.5
             preferredHighlightEnd: 0.5
             onFlickEnded: {
                 // backgroundImage.source = pathView.currentItem.children[1].source
             }
 
-            path: albumCaourselPath
+            path: collectionCaourselPath
 
             Keys.onLeftPressed:  decrementCurrentIndex()
             Keys.onRightPressed: incrementCurrentIndex()
         }
 
         Path {
-            id: albumCaourselPath
+            id: collectionCaourselPath
 
-            startX:root.width * 0.05 - root.albumSize / 2
-            startY:root.height * 0.3
+            startX:root.width * 0.05 - root.collectionSize / 2
+            startY:root.height * 0.5
             PathAttribute {name: "scale"; value: 0.5}
             PathAttribute {name: "zIndex"; value: 1}
 
-            PathLine{x: root.width * 0.5; y: root.height * 0.3}
+            PathLine{x: root.width * 0.5; y: root.height * 0.5}
             PathPercent {value: 0.50}
             PathAttribute {name: "scale"; value: 1}
             PathAttribute {name: "zIndex"; value: 3}
 
-            PathLine{x:root.width * 0.95 + root.albumSize / 2; y:root.height * 0.3}
+            PathLine{x:root.width * 0.95 + root.collectionSize / 2; y:root.height * 0.5}
             PathPercent {value: 1.00}
             PathAttribute {name: "scale"; value: 0.5}
             PathAttribute {name: "zIndex"; value: 1}
         }
     }
 
-    MediaPlayer {
-        id: mediaplayer
+    ListModel {
+        id: albumModel
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aaaa"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "ddafdsf"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "adsfad"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "123123"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aa123123aa"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aaa123123123123a"}
+    }
+
+    Component {
+        id: albumViewModel
+        Rectangle {
+            id: wrapper
+            width: 180
+            height: contactInfo.height
+            color: "transparent"
+            Image {
+                id: albumImage
+                source: picPath
+                width: root.albumSize
+                height: root.albumSize
+                smooth:true
+                Image {
+                    source: ""
+                    width:70
+                    height:70
+                    anchors.horizontalCenter: parent.horizontalCenter
+                    anchors.verticalCenter  : parent.verticalCenter
+                    MouseArea {
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        onClicked: {
+                            qmlroot.albumClicked(albumId)
+                        }
+
+                        onPressed:{
+                            parent.source = "img/large_cover_play_down.png"
+                        }
+                        onEntered:{
+                            parent.source = "img/large_cover_play_hover.png"
+                        }
+                        onReleased:{
+                            parent.source = "img/large_cover_play_normal.png"
+                        }
+                        onExited:{
+                            parent.source = ""
+                        }
+                    }
+                }
+
+
+            }
+            Text {
+                anchors.top: albumImage.bottom
+                id: contactInfo
+                text: albumName
+                color: "black"
+            }
+        }
+    }
+    Rectangle {
+        Layout.alignment: Qt.AlignBottom
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        ListView {
+            orientation: ListView.Horizontal
+            id: albumView
+            model: albumModel
+            delegate: albumViewModel
+            highlightFollowsCurrentItem: false
+            focus: true
+
+        }
     }
 }
 

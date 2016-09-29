@@ -25,7 +25,8 @@ QVariant FunctionListModel::data(const QModelIndex &index, int role) const
     case Qt::DisplayRole:
         return function_list[index.row()];
     case Qt::TextAlignmentRole:
-        return Qt::AlignVCenter + Qt::AlignHCenter;
+        return Qt::AlignVCenter;
+
     }
     return QVariant();
 }
