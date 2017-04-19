@@ -22,5 +22,5 @@ void FileDownloader::fileDownloaded(QNetworkReply* pReply) {
 }
 
 QByteArray& FileDownloader::downloadedData() {
- return m_DownloadedData;
+    return m_DownloadedData;
 }

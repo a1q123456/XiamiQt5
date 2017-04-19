@@ -48,7 +48,7 @@ void MainWindow::play(const Playlist &list)
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete api;
+    xiamiapi::IXiamiAPI::DestroyInstance(api);
     delete player;
     delete playlist;
 }

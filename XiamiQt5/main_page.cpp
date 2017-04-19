@@ -18,7 +18,7 @@ main_page::main_page(QWidget *parent, QWidget * context) :
         xiamiapi::IXiamiCollectionInfo* info;
         recommend_list->get_element(i)->QueryInterface(recommend_list->ElementIID(), (void **)&info);
         std::string logo = info->get_logo();
-        logo.replace(logo.rfind("_1"), 2, "_5");
+        // logo.replace(logo.rfind("_1"), 2, "_5");
         list_data.push_back(CarouselCollectionModelObject{info->get_list_id(), logo.c_str(), info->get_collect_name()});
         info->Release();
     }
@@ -35,7 +35,6 @@ main_page::main_page(QWidget *parent, QWidget * context) :
     QObject *item = view->rootObject();
     connect(item, SIGNAL(collectionClicked(int)), this, SLOT(playCollection(int)));
     ui->horizontalLayout->addWidget(container);
-
 }
 
 main_page::~main_page()

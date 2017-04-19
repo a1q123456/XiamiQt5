@@ -64,11 +64,13 @@ ColumnLayout {
                  width:root.collectionSize
                  height:root.collectionSize
                  z:PathView.zIndex
+
                  Image {
                     id:collectionCover
                     width:root.collectionSize;
                     height:root.collectionSize;
                     source: picPath
+                    smooth: true
                     anchors.horizontalCenter: parent.horizontalCenter
 
 
@@ -102,20 +104,36 @@ ColumnLayout {
                         }
                         visible:(parent.parent.z==3)?true:false
                     }
+
+                    LinearGradient {
+                        anchors.fill: collectionCover
+                        start: Qt.point(0, 0)
+                        end: Qt.point(0, 300)
+                        gradient: Gradient {
+                            GradientStop { position: 0.6; color: Qt.rgba(0,0,0, 0.0) }
+                            GradientStop { position: 1.0; color: "black" }
+                        }
+                    }
                     Text {
+                        id: collectionNameText
                         text: collectionName
                         font.family: "sans-serif"
-                        font.pointSize: 8
+                        font.pointSize: 13
+                        font.bold: true
                         color: "white"
                         wrapMode :Text.WordWrap
                         anchors {
                             bottom:collectionCover.bottom;
                             bottomMargin:0
+                            left: collectionCover.left;
+                            right: collectionCover.right;
+
                         }
                         visible:(parent.parent.z==3)?true:false
                         //opacity:2 * (scaleValue-0.5)
                     }
                 }
+
                 Image {
                     id:mirror
                     width:root.collectionSize
@@ -199,16 +217,19 @@ ColumnLayout {
 
     ListModel {
         id: albumModel
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aaaa"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "ddafdsf"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "adsfad"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "123123"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aa123123aa"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "aaa123123123123a"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "a1aaa"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 1; albumName: "ddafdsf"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 2; albumName: "adsfad"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 3; albumName: "123123"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 4; albumName: "aa123123aa"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 5; albumName: "aaa123123123123a"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 6; albumName: "aaa123123123123a"}
+        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 7; albumName: "aaa123123123123a"}
     }
 
     Component {
         id: albumViewModel
+
         Rectangle {
             id: wrapper
             width: 180
@@ -258,11 +279,13 @@ ColumnLayout {
             }
         }
     }
+    /*
     Rectangle {
         Layout.alignment: Qt.AlignBottom
         Layout.fillHeight: true
         Layout.fillWidth: true
         ListView {
+            anchors.fill: parent
             orientation: ListView.Horizontal
             id: albumView
             model: albumModel
@@ -272,5 +295,6 @@ ColumnLayout {
 
         }
     }
+    */
 }
 

@@ -6,7 +6,8 @@
 #include <vector>
 #include "carousellistmodelobject.h"
 
-enum CarouselListViewModelRole {
+// #include "listviewmodelrole.h"
+enum AlbumListViewModelRole {
     CollectionIdRole = Qt::UserRole + 1,
     PicPathRole = Qt::UserRole + 2
 };
