@@ -30,6 +30,7 @@
 #include <QQmlContext>
 #include "carousellistviewmodel.h"
 #include "carousellistmodelobject.h"
+#include "di.hpp"
 
 #endif // PCH_H
 

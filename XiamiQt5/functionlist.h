@@ -3,12 +3,15 @@
 
 #include <QStringList>
 #include <QWidget>
+#include <unordered_map>
+
 
 class FunctionList
 {
 private:
     QWidget* current_page = nullptr;
     FunctionList();
+
 public:
     FunctionList(const FunctionList&) = delete;
     FunctionList(FunctionList&&) = delete;

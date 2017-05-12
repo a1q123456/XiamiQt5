@@ -1,6 +1,7 @@
 #include "functionlist.h"
 #include "main_page.h"
 
+
 QStringList FunctionList::function_list()
 {
     return QStringList{

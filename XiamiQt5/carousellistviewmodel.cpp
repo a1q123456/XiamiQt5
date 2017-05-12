@@ -3,6 +3,7 @@
 CarouselCollectionListViewModel::CarouselCollectionListViewModel(QObject *parent):
     QAbstractListModel(parent)
 {
+
 }
 
 int CarouselCollectionListViewModel::rowCount(const QModelIndex &) const

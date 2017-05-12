@@ -28,10 +28,7 @@ SOURCES += main.cpp\
     filedownloader.cpp \
     carousellistmodelobject.cpp \
     carousellistviewmodel.cpp \
-    songinfo.cpp \
-    mainpageprovider.cpp \
-    icomponentprovider.cpp \
-    xiamiapiprovider.cpp
+    songinfo.cpp
 
 HEADERS  += mainwindow.h \
     pch.h \
@@ -42,10 +39,7 @@ HEADERS  += mainwindow.h \
     carousellistmodelobject.h \
     carousellistviewmodel.h \
     playlist.h \
-    songinfo.h \
-    mainpageprovider.h \
-    icomponentprovider.h \
-    xiamiapiprovider.h
+    songinfo.h
 
 FORMS    += mainwindow.ui \
     main_page.ui
@@ -59,6 +53,7 @@ mac {
 }
 
 INCLUDEPATH += $$PWD/../XiamiAPI/include
+INCLUDEPATH += $$PWD/../boost
 LIBS += -L"$$PWD/../XiamiAPI/lib" -lxiamiapi -lcurl
 RESOURCES += \
     resource.qrc
