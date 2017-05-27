@@ -31,6 +31,7 @@
 #include "carousellistviewmodel.h"
 #include "carousellistmodelobject.h"
 #include "di.hpp"
+#include <sstream>
 
 #endif // PCH_H
 

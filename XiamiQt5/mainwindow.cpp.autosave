@@ -62,6 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
         else if (player->state() == QMediaPlayer::PausedState)
         {
             player->play();
+            ui->play_btn->setIcon();
         }
     });
     ui->function_list->setModel(model);

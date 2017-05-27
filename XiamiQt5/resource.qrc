@@ -4,5 +4,16 @@
         <file>img/large_cover_play_down.png</file>
         <file>img/large_cover_play_hover.png</file>
         <file>img/large_cover_play_normal.png</file>
+        <file>img/next_down.tiff</file>
+        <file>img/next_hover.tiff</file>
+        <file>img/pause_down.tiff</file>
+        <file>img/pause_hover.tiff</file>
+        <file>img/play_down.tiff</file>
+        <file>img/play_hover.tiff</file>
+        <file>img/previous_down.tiff</file>
+        <file>img/previous_hover.tiff</file>
+        <file>img/green.png</file>
+        <file>img/blue.png</file>
+        <file>img/orange.png</file>
     </qresource>
 </RCC>
