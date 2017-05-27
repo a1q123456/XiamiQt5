@@ -534,7 +534,7 @@ background-color: rgb(240, 240, 240);
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="play_btn">
+           <widget class="QCheckBox" name="play_btn">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
               <horstretch>0</horstretch>
@@ -550,13 +550,14 @@ background-color: rgb(240, 240, 240);
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
+            <property name="styleSheet">
+             <string notr="true">#play_btn {
+	image: url(:img/play_hover.tiff)
+
+}</string>
+            </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="resource.qrc">
-              <normaloff>:/img/play_down.tiff</normaloff>
-              <normalon>:/img/play_hover.tiff</normalon>:/img/play_down.tiff</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -564,11 +565,11 @@ background-color: rgb(240, 240, 240);
               <height>48</height>
              </size>
             </property>
-            <property name="autoDefault">
-             <bool>false</bool>
-            </property>
-            <property name="flat">
+            <property name="checkable">
              <bool>true</bool>
+            </property>
+            <property name="tristate">
+             <bool>false</bool>
             </property>
            </widget>
           </item>

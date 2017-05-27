@@ -15,5 +15,9 @@
         <file>img/green.png</file>
         <file>img/blue.png</file>
         <file>img/orange.png</file>
+        <file>img/next_normal.tiff</file>
+        <file>img/pause_normal.tiff</file>
+        <file>img/play_normal.tiff</file>
+        <file>img/previous_normal.tiff</file>
     </qresource>
 </RCC>
