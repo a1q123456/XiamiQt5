@@ -1,0 +1,20 @@
+#include "play_history.h"
+#include "ui_play_history.h"
+#include "mainwindow.h"
+
+play_history::play_history(QWidget *parent, QWidget *context) :
+    QWidget(parent),
+    context(context),
+    ui(new Ui::play_history)
+{
+    ui->setupUi(this);
+    MainWindow* mainwindow = static_cast<MainWindow*>(context);
+    ui->playlist_tableview->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+    ui->play_history_tableview->setModel(mainwindow->getPlayhistoryModelCopy(this));
+
+}
+
+play_history::~play_history()
+{
+    delete ui;
+}

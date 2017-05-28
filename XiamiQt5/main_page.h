@@ -20,6 +20,7 @@ public:
 private slots:
     void loadImage(QPushButton* &button, FileDownloader* downloader);
     void playCollection(int collectionId);
+    void playAlbum(int albumId);
 private:
     QWidget * context;
     Ui::main_page *ui;

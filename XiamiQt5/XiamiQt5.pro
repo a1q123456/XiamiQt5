@@ -28,7 +28,11 @@ SOURCES += main.cpp\
     filedownloader.cpp \
     carousellistmodelobject.cpp \
     carousellistviewmodel.cpp \
-    songinfo.cpp
+    songinfo.cpp \
+    playlist_page.cpp \
+    playlisttablemodel.cpp \
+    playhistorytablemodel.cpp \
+    play_history_page.cpp
 
 HEADERS  += mainwindow.h \
     pch.h \
@@ -38,14 +42,19 @@ HEADERS  += mainwindow.h \
     filedownloader.h \
     carousellistmodelobject.h \
     carousellistviewmodel.h \
-    playlist.h \
-    songinfo.h
+    songinfo.h \
+    playlist_page.h \
+    playlisttablemodel.h \
+    playhistorytablemodel.h \
+    play_history_page.h
 
 FORMS    += mainwindow.ui \
-    main_page.ui
+    main_page.ui \
+    playlist_page.ui \
+    play_history_page.ui
 
 mac {
-    QMAKE_MAC_SDK = macosx10.12
+    QMAKE_MAC_SDK = macosx10.11
     OTHER_FILES += Info.plist
     QMAKE_INFO_PLIST +=  Info.plist
     QMAKE_POST_LINK += sed -i -e "s/@VERSION@/$$VERSION/g" "./$${TARGET}.app/Contents/Info.plist";

@@ -66,6 +66,13 @@ ColumnLayout {
                  z:PathView.zIndex
 
                  Image {
+                    onStateChanged: {
+                        if (collectionCover.state === Image.Error)
+                        {
+                            collectionCover.source = collectionCover.source.replace("_5.jpg", "_1.jpg");
+                        }
+                    }
+
                     id:collectionCover
                     width:root.collectionSize;
                     height:root.collectionSize;
@@ -215,18 +222,6 @@ ColumnLayout {
         }
     }
 
-    ListModel {
-        id: albumModel
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 0; albumName: "a1aaa"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 1; albumName: "ddafdsf"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 2; albumName: "adsfad"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 3; albumName: "123123"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 4; albumName: "aa123123aa"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 5; albumName: "aaa123123123123a"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 6; albumName: "aaa123123123123a"}
-        ListElement {picPath: "https://www.baidu.com/img/bd_logo1.png"; albumId: 7; albumName: "aaa123123123123a"}
-    }
-
     Component {
         id: albumViewModel
 
@@ -237,6 +232,15 @@ ColumnLayout {
             color: "transparent"
             Image {
                 id: albumImage
+
+                onStatusChanged: {
+                    if (albumImage.status === Image.Error)
+                    {
+                        albumImage.source = picPath.replace("_5.jpg", "_1.jpg");
+                        console.log("faillback to ", albumImage.source);
+                    }
+                }
+
                 source: picPath
                 width: root.albumSize
                 height: root.albumSize
@@ -251,7 +255,7 @@ ColumnLayout {
                         anchors.fill: parent
                         hoverEnabled: true
                         onClicked: {
-                            qmlroot.albumClicked(albumId)
+                            qmlroot.albumClicked(collectionId)
                         }
 
                         onPressed:{
@@ -274,16 +278,21 @@ ColumnLayout {
             Text {
                 anchors.top: albumImage.bottom
                 id: contactInfo
-                text: albumName
+                text: collectionName
                 color: "black"
+                wrapMode :Text.WordWrap
+                anchors.left: albumImage.left;
+                anchors.right: albumImage.right;
             }
         }
     }
-    /*
+
     Rectangle {
         Layout.alignment: Qt.AlignBottom
         Layout.fillHeight: true
         Layout.fillWidth: true
+
+        color: "transparent"
         ListView {
             anchors.fill: parent
             orientation: ListView.Horizontal
@@ -292,9 +301,8 @@ ColumnLayout {
             delegate: albumViewModel
             highlightFollowsCurrentItem: false
             focus: true
-
         }
     }
-    */
+
 }
 

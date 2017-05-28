@@ -12,6 +12,7 @@ public:
     QString song_name;
     QString artists;
     QString song_url;
+    bool is_played;
 };
 
 #endif // SONGINFO_H

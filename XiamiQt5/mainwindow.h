@@ -2,11 +2,12 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include "playlist.h"
+#include "playlisttablemodel.h"
 #include "xiamiapi.h"
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <sstream>
+#include "playhistorytablemodel.h"
 
 namespace Ui {
 class MainWindow;
@@ -21,8 +22,17 @@ public:
 
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
-    void play(const Playlist& list);
+    void play(QVector<SongInfo> && list);
+    void playIndex(int idx);
     xiamiapi::IXiamiAPI * api = nullptr;
+    PlaylistTableModel * getPlaylistModelCopy(QWidget* parent) const;
+    void playNext();
+    void playPrev();
+    PlayhistoryTableModel * getPlayhistoryModelCopy(QWidget* parent) const;
+signals:
+    void onPlaylistChanged();
+    void onSongChanged(int, const SongInfo &);
+
 protected slots:
     void on_close_btn_clicked();
 
@@ -47,7 +57,9 @@ private:
     int mouse_press_x_coord;
     int mouse_press_y_coord;
     QMediaPlayer * player;
-    QMediaPlaylist * playlist;
+    QMediaPlaylist * qplaylist;
+    PlaylistTableModel * playlistmodel;
+    PlayhistoryTableModel * playhistorymodel;
 };
 
 #endif // MAINWINDOW_H

@@ -33,7 +33,7 @@ border: none;
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_2">
     <property name="spacing">
-     <number>5</number>
+     <number>0</number>
     </property>
     <property name="leftMargin">
      <number>5</number>
@@ -174,7 +174,7 @@ border-top-right-radius: 10px;
                    <enum>Qt::ClickFocus</enum>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">background: none;</string>
+                   <string notr="true"/>
                   </property>
                   <property name="text">
                    <string/>
@@ -267,7 +267,7 @@ font-weight:500;
 font-size: 14pt;</string>
             </property>
             <property name="text">
-             <string>虾米音乐</string>
+             <string>音乐播放器</string>
             </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
@@ -420,9 +420,18 @@ border-radius: 10px;</string>
               <height>16777215</height>
              </size>
             </property>
+            <property name="focusPolicy">
+             <enum>Qt::NoFocus</enum>
+            </property>
             <property name="styleSheet">
              <string notr="true">#function_list{
 background-color: rgb(240, 240, 240);
+border: none;
+outline: none;
+selection-background-color: blue;
+}
+#function_list::item {
+height: 30px;
 }</string>
             </property>
             <property name="showDropIndicator" stdset="0">
@@ -435,6 +444,7 @@ background-color: rgb(240, 240, 240);
             <property name="styleSheet">
              <string notr="true"/>
             </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7"/>
            </widget>
           </item>
          </layout>
@@ -507,20 +517,34 @@ background-color: rgb(240, 240, 240);
             </property>
             <property name="maximumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>28</width>
+              <height>28</height>
              </size>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#prev_btn
+		{
+			min-width: 28px;
+			max-width: 28px;
+			min-height: 28px;
+			max-width: 28px;
+			border-image: url(:img/previous_normal.tiff);
+			qproperty-text: &quot;&quot;;
+		}
+		QPushButton#prev_btn:hover
+		{
+			border-image: url(:img/previous_hover.tiff);
+		}
+		QPushButton#prev_btn:pressed
+		{
+			border-image: url(:img/previous_down.tiff);
+		}</string>
+            </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="resource.qrc">
-              <normaloff>:/img/previous_hover.tiff</normaloff>
-              <normalon>:/img/previous_down.tiff</normalon>:/img/previous_hover.tiff</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -536,15 +560,15 @@ background-color: rgb(240, 240, 240);
           <item>
            <widget class="QCheckBox" name="play_btn">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
             <property name="maximumSize">
              <size>
-              <width>50</width>
-              <height>50</height>
+              <width>55</width>
+              <height>48</height>
              </size>
             </property>
             <property name="focusPolicy">
@@ -552,12 +576,43 @@ background-color: rgb(240, 240, 240);
             </property>
             <property name="styleSheet">
              <string notr="true">#play_btn {
-	image: url(:img/play_hover.tiff)
-
-}</string>
+	margin-right: 7px;
+}
+QCheckBox#play_btn::indicator 
+		{
+			width: 48px;
+			height: 48px;
+		}
+		QCheckBox#play_btn
+		{
+			min-width: 48px;
+			max-width: 48px;
+			min-height: 48px;
+			max-width: 48px;
+			qproperty-text: &quot;&quot;;
+		}
+		/*播放*/
+		QCheckBox#play_btn::indicator:unchecked
+		{
+			image:url(:img/play_normal.tiff);
+		}
+		QCheckBox#play_btn::indicator:unchecked:hover,
+		QCheckBox#play_btn::indicator:unchecked:pressed
+		{
+			image:url(:img/play_down.tiff);
+		}
+		/*暂停*/
+		QCheckBox#play_btn::indicator::checked
+		{
+			image:url(:img/pause_normal.tiff);
+		}
+		QCheckBox#play_btn::indicator::checked:hover,QCheckBox#play_btn::indicator::checked:pressed
+		{
+			image:url(:img/pause_down.tiff);
+		}</string>
             </property>
             <property name="text">
-             <string/>
+             <string notr="true"/>
             </property>
             <property name="iconSize">
              <size>
@@ -566,9 +621,9 @@ background-color: rgb(240, 240, 240);
              </size>
             </property>
             <property name="checkable">
-             <bool>true</bool>
+             <bool>false</bool>
             </property>
-            <property name="tristate">
+            <property name="checked">
              <bool>false</bool>
             </property>
            </widget>
@@ -583,20 +638,34 @@ background-color: rgb(240, 240, 240);
             </property>
             <property name="maximumSize">
              <size>
-              <width>40</width>
-              <height>40</height>
+              <width>28</width>
+              <height>28</height>
              </size>
             </property>
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
+            <property name="styleSheet">
+             <string notr="true">QPushButton#next_btn
+		{
+			min-width: 29px;
+			max-width: 29px;
+			min-height: 28px;
+			max-width: 28px;
+			border-image: url(:img/next_normal.tiff);
+			qproperty-text: &quot;&quot;;
+		}
+		QPushButton#next_btn:hover
+		{
+			border-image: url(:img/next_hover.tiff);
+		}
+		QPushButton#next_btn:pressed
+		{
+			border-image: url(:img/next_down.tiff);
+		}</string>
+            </property>
             <property name="text">
              <string/>
-            </property>
-            <property name="icon">
-             <iconset resource="resource.qrc">
-              <normaloff>:/img/next_down.tiff</normaloff>
-              <normalon>:/img/next_hover.tiff</normalon>:/img/next_down.tiff</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -631,7 +700,7 @@ background-color: rgb(240, 240, 240);
           <string notr="true">color: rgb(255, 255, 255);</string>
          </property>
          <property name="text">
-          <string>0:0</string>
+          <string>00:00</string>
          </property>
         </widget>
        </item>
@@ -652,7 +721,7 @@ background-color: rgb(240, 240, 240);
 margin-right: 12;</string>
          </property>
          <property name="text">
-          <string>0:0</string>
+          <string>00:00</string>
          </property>
         </widget>
        </item>

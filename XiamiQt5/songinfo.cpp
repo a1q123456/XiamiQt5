@@ -8,7 +8,8 @@ SongInfo::SongInfo(const uint64_t & song_id, const char * song_name, const char 
     song_id(song_id),
     song_name(song_name),
     artists(artists),
-    song_url(song_url)
+    song_url(song_url),
+    is_played(false)
 {
 
 }
